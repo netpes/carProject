@@ -90,28 +90,6 @@ async function Haklai(req){
   await browser.close();
   return data1
 }
-//  async function Hafinix(req){
-//   const input = req
-//   console.log(input)
-//   const browser = await puppeteer.launch({
-//     headless: false
-//   });
-//   const page = await browser.newPage();
-//   await page?.goto("https://www.fnx.co.il/claims-customer-service/claims-car-insurance/vehicle-third-party-all/", {waitUntil: 'networkidle0'})
-//   await page.type("#AccidentDate","01/02/2022")
-//   await page.type("#HitCarNumber",input)
-//   await page.click("#Agree")
-//   await page.click("#firststepform > div.input-row.submit-div > input")
-//   await page.waitForFunction($('#SubmitCaller').val('dd'))
-//   let data;
-//   try {
-//     data = await page.$eval("#firststepform > div.nopolicyexist > div",e=>e.textContent)
-//   } catch (err){
-//     data = await page.$eval("#holder-001 > div",e=>e.textContent)
-//   }
-//   await console.log(data)
-//   await browser.close();
-// }//need fix
 async function Wesure(req){
   const input = req
   console.log(input)
@@ -158,6 +136,9 @@ async function Menora(req){
   return data
 }
 
+
+
+
 module.exports = {
 
   Hash:async (req,res)=>{
@@ -181,7 +162,6 @@ module.exports = {
     const q = await page.$eval("#coverage_check_middle > div.banner_wrapper.row.popupOpen > div.bgImg.popupOpen > div > div.coverage_popup_not.col-xs-12 > div", e => e.textContent)
     await console.log(q)
     await browser.close();
-  // await Hafinix(input)
     const services = {
       Hash: q,
       Haklai:Haklai(input),
