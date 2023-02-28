@@ -7,17 +7,7 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const user = require("./views/user")
 
-// mongo connection
-mongoose.set("strictQuery", true);
-const url =
-  "mongodb+srv://netpes:netpes@cluster0.cnxmrap.mongodb.net/?retryWrites=true&w=majority";
-mongoose?.connect(url, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
-mongoose?.connection.on("connected", () => {
-  console.log("connected");
-});
+
 
 app.set("views", __dirname + "/views");
 app.engine("html", require("ejs").renderFile);
