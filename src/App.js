@@ -31,7 +31,7 @@ function App() {
   function HandleSubmit(e) {
     e.preventDefault();
     setIsLoading(true)
-    axios.post("http://localhost:2000/search", {input:input}).then((res)=>{
+    axios.post("https://car-backend-9jqj.onrender.com/search", {input:input}).then((res)=>{
         console.log(res.data.services.Libra, "trtre")
 
             rows.push({id: 1,name:'הכשרה:', answer:res.data.services.Hash})
