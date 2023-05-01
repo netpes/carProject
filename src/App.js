@@ -17,7 +17,7 @@ function App() {
     let columns = [
         { field: 'id', headerName: 'ID', width: 70 },
         { field: 'name', headerName: 'Name', width: 170 },
-        { field: 'answer', headerName: 'Answer', width: 500 }]
+        { field: 'answer', headerName: 'Answer', width: 800 }]
   const [input,setInput] = useState()
   const [output,setOutput] = useState()
   const [isloading,setIsLoading] = useState(true)
@@ -55,13 +55,31 @@ function App() {
 
         <CssBaseline />
 
-      <form onSubmit={HandleSubmit} style={{ marginTop:5}}>
-        <TextField id="outlined-basic" sx={{width:"60%", height:"15%"}} label="Search Bar" variant="outlined" onChange={e=>setInput(e.target.value)} value={input}/>
-        <Button variant="contained"  sx={{width:"30%", height:"15%", padding:2}} onClick={HandleSubmit}>Search</Button>
+      <form onSubmit={HandleSubmit} className={'flex flex-wrap flex-row items-center justify-center'}>
+          <br/>
+          <div className={"my-16"}>
+
+          </div>
+          {/*<div*/}
+          {/*    className={"absolute bg-gray-200 w-70 h-100"}>*/}
+          {/*    <TextField id="filled-basic" label="Search Bar" onChange={e=>setInput(e.target.value)} value={input} sx={{width:"50vw", height:"15%", backgroundColor:"white", color:"black"}} variant="filled" />*/}
+          {/*    <Button variant="contained"  sx={{width:"auto", height:"15%", padding:2, backgroundColor:"white", color:"black"}} onClick={HandleSubmit}>Search</Button>*/}
+          {/*</div>*/}
+          <div className="w-3/4 mx-auto relative">
+              <input type="number" placeholder="Search" maxLength="8" onChange={e=>setInput(e.target.value)} value={input}
+                     className="w-full p-6 h-6  text-gray-700 placeholder-gray-400 border rounded-lg focus:outline-none focus:shadow-outline" />
+                  <button type="submit"
+                          className="absolute inset-y-0 right-0 px-4 text-white bg-blue-500 rounded-r-lg hover:bg-blue-700">
+                      Search
+                  </button>
+          </div>
+
+
       </form>
-          {isloading ? <p>loading...</p>:
-              <div style={{ height: 400, width: '100%' }}>
-                  <DataGrid
+          {isloading ? <p className={"text-white"}>loading...</p>:
+              <div style={{ height: 400  }} className={"text-white flex flex-wrap flex-row items-center justify-center "}>
+                  <DataGrid sx={{
+                      color:"white", display:"flex", justifyContent: "center",fontSize:25}}
                       rows={rows}
                       columns={columns}
                       pageSize={5}

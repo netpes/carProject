@@ -14,7 +14,7 @@ app.engine("html", require("ejs").renderFile);
 // Put these statements before you define any routes.
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(cors({ origin: " http://localhost:3000" }));
+app.use(cors());
 app.use("/",user)
 
 
