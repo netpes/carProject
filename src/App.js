@@ -68,7 +68,7 @@ function App() {
           <div className="w-3/4 mx-auto relative">
               <input type="number" placeholder="Search" maxLength="8" onChange={e=>setInput(e.target.value)} value={input}
                      className="w-full p-6 h-6  text-gray-700 placeholder-gray-400 border rounded-lg focus:outline-none focus:shadow-outline" />
-                  <button type="submit"
+                  <button type="submit" onClick={()=>HandleSubmit}
                           className="absolute inset-y-0 right-0 px-4 text-white bg-blue-500 rounded-r-lg hover:bg-blue-700">
                       Search
                   </button>
