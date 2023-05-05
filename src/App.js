@@ -10,7 +10,8 @@ import {
 
   TextField
 } from "@mui/material";
-
+import CircularProgress from '@mui/material/CircularProgress';
+import Box from '@mui/material/Box';
 
 function App() {
   const [rows,setRows] = useState([])
@@ -21,6 +22,7 @@ function App() {
   const [input,setInput] = useState()
   const [output,setOutput] = useState()
   const [isloading,setIsLoading] = useState(true)
+  const [loaded,setloaded] = useState(false)
   const [name,setName] = useState("")
 
 
@@ -29,8 +31,9 @@ function App() {
   }
 
   function HandleSubmit(e) {
+      console.log("clicked")
     e.preventDefault();
-    setIsLoading(true)
+    setIsLoading(false)
     axios.post("https://car-backend-9jqj.onrender.com/search", {input:input}).then((res)=>{
         console.log(res.data.services.Libra, "trtre")
 
@@ -43,6 +46,7 @@ function App() {
             rows.push({id: 7,name:'חלקאי:', answer:res.data.services.Haklai})
 
         setIsLoading(false)
+        setloaded(true)
 
     })
   }
@@ -76,8 +80,18 @@ function App() {
 
 
       </form>
-          {isloading ? <p className={"text-white"}>loading...</p>:
+          {isloading ? <p className={"text-white"}>Please Write The Car Number</p>:
               <div style={{ height: 400  }} className={"text-white flex flex-wrap flex-row items-center justify-center "}>
+                  {!loaded? <div>
+                      <Box sx={{ display: 'flex' }}>
+                          <CircularProgress />
+
+                      </Box>
+                      {/*<br/>*/}
+                      {/*<br/>*/}
+                      {/*<br/>*/}
+                      {/*    <h1 className={"text-3xl"}>Its Gonna Take a While</h1>*/}
+                  </div>:
                   <DataGrid sx={{
                       color:"white", display:"flex", justifyContent: "center",fontSize:25}}
                       rows={rows}
@@ -86,7 +100,7 @@ function App() {
                       rowsPerPageOptions={[5]}
                       checkboxSelection
                   />
-
+                  }
               </div>}
 
     </div>
